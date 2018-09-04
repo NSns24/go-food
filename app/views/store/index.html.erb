@@ -1,0 +1,18 @@
+<% @page_title = "Store" %>
+
+<p id="notice"><%= notice %></p>
+<h1>Your Food Catalog</h1>
+
+<% @foods.each do |food| %>
+	<div class="entry">
+		<%= image_tag(food.image_url) %>
+		<h3><%= food.name %></h3>
+		<%= sanitize(food.description) %>
+		<!-- sanitize untuk mencegah injection -->
+		<div class="price_line">
+			<span class="price">
+				<%= number_to_currency(food.price, unit: "Rp ", delimeter: ".", separator: ",") %>
+			</span>
+		</div>
+	</div>
+<% end %>
